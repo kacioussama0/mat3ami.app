@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('capacity')->nullable();
             $table->enum('status', ['free','occupied','reserved'])->default('free');
             $table->boolean('is_active')->default(true);
+            $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('zone_id')->nullable()->constrained('zones');
             $table->timestamps();
             $table->softDeletes();
